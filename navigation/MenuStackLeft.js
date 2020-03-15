@@ -35,7 +35,7 @@ export default function MyDrawer({ navigation, route }) {
   })
   return (
     <Drawer.Navigator drawerContent={props => CustomDrawerContent(props)} >
-      <Drawer.Screen name='NavrBar' component={BottomTabNavigator} />
+      <Drawer.Screen name='Main' component={BottomTabNavigator} />
       <Drawer.Screen name="Settings" component={Settigs} />
 
     </Drawer.Navigator>
