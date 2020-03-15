@@ -1,8 +1,10 @@
 import * as React from 'react';
 import {
   createDrawerNavigator, DrawerContentScrollView,
-  DrawerItemList, DrawerContent, DrawerItem
+  DrawerItemList, DrawerContent, DrawerItem,
 } from '@react-navigation/drawer';
+import { Image, Platform, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { useNavigation, DrawerActions } from '@react-navigation/native'
 import HomeScreen from '../screens/HomeScreen';
 import LinksScreen from '../screens/LinksScreen';
 import Settigs from '../screens/Settings';
@@ -20,19 +22,20 @@ function CustomDrawerContent(props) {
 
 const Drawer = createDrawerNavigator();
 
+
 export default function MyDrawer({ navigation, route }) {
-  console.log(navigation)
+
   navigation.setOptions({
     headerTitle: getHeaderTitle(route),
     headerLeft: () => <Icon
-      onPress={() => navigation.openDrawer()}
+      onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
       name="md-menu" size={30}
       style={{ paddingLeft: 10 }}
     />
   })
   return (
     <Drawer.Navigator drawerContent={props => CustomDrawerContent(props)} >
-      <Drawer.Screen name='Home' component={BottomTabNavigator} />
+      <Drawer.Screen name='NavrBar' component={BottomTabNavigator} />
       <Drawer.Screen name="Settings" component={Settigs} />
 
     </Drawer.Navigator>
